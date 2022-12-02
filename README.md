@@ -1,5 +1,8 @@
 # Advent Of Code 2022
 
+- [JavaScript](#javascript)
+- [Rust](#rust)
+
 | Day    | JavaScript | Rust |
 | ------ | ---------- | ---- |
 | Day 01 | ✅         |      |
