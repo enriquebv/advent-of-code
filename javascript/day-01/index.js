@@ -1,7 +1,4 @@
-const fs = require('fs')
-const path = require('path')
-
-const input = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+import { readFile } from '../shared'
 
 export function parseInput(input) {
   return input
@@ -24,6 +21,8 @@ export function solve(caloriesMatrix) {
 
   return { biggestCalories, firstThreeBiggestCalories }
 }
+
+const input = readFile(__dirname, './input.txt')
 
 const result = solve(parseInput(input))
 

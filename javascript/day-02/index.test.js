@@ -1,4 +1,5 @@
 import { getRoundOutput, parseInput, solve1, solve2 } from '.'
+import { SHAPES, OUTPUTS } from './shared-enums'
 
 const DEMO_INPUT = `
 A Y
@@ -16,17 +17,17 @@ describe('Day 02', () => {
   })
 
   it('should "getRoundOutput" correctly returns three possible outputs', () => {
-    expect(getRoundOutput('SCISSORS', 'PAPER')).toEqual('WIN')
-    expect(getRoundOutput('ROCK', 'SCISSORS')).toEqual('WIN')
-    expect(getRoundOutput('PAPER', 'ROCK')).toEqual('WIN')
+    expect(getRoundOutput(SHAPES.SCISSORS, SHAPES.PAPER)).toEqual(OUTPUTS.WIN)
+    expect(getRoundOutput(SHAPES.ROCK, SHAPES.SCISSORS)).toEqual(OUTPUTS.WIN)
+    expect(getRoundOutput(SHAPES.PAPER, SHAPES.ROCK)).toEqual(OUTPUTS.WIN)
 
-    expect(getRoundOutput('PAPER', 'SCISSORS')).toEqual('LOSS')
-    expect(getRoundOutput('SCISSORS', 'ROCK')).toEqual('LOSS')
-    expect(getRoundOutput('ROCK', 'PAPER')).toEqual('LOSS')
+    expect(getRoundOutput(SHAPES.PAPER, SHAPES.SCISSORS)).toEqual(OUTPUTS.LOSS)
+    expect(getRoundOutput(SHAPES.SCISSORS, SHAPES.ROCK)).toEqual(OUTPUTS.LOSS)
+    expect(getRoundOutput(SHAPES.ROCK, SHAPES.PAPER)).toEqual(OUTPUTS.LOSS)
 
-    expect(getRoundOutput('PAPER', 'PAPER')).toEqual('DRAW')
-    expect(getRoundOutput('SCISSORS', 'SCISSORS')).toEqual('DRAW')
-    expect(getRoundOutput('ROCK', 'ROCK')).toEqual('DRAW')
+    expect(getRoundOutput(SHAPES.PAPER, SHAPES.PAPER)).toEqual(OUTPUTS.DRAW)
+    expect(getRoundOutput(SHAPES.SCISSORS, SHAPES.SCISSORS)).toEqual(OUTPUTS.DRAW)
+    expect(getRoundOutput(SHAPES.ROCK, SHAPES.ROCK)).toEqual(OUTPUTS.DRAW)
   })
 
   it('should calculate theoric output if second column are shapes', () => {

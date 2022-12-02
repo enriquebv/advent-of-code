@@ -1,25 +1,11 @@
-const fs = require('fs')
-const path = require('path')
+import { readFile } from '../shared'
+import { SHAPES, OUTPUTS, SHAPE_POINTS, ROUND_OUTPUT_POINTS, OPPONENT_SHAPES } from './shared-enums'
 
 export function parseInput(input) {
   return input
     .trim()
     .split(/\n/)
     .map((round) => round.split(' '))
-}
-
-// Welcome to enumland
-
-const SHAPES = {
-  ROCK: 'ROCK',
-  PAPER: 'PAPER',
-  SCISSORS: 'SCISSORS',
-}
-
-const OUTPUTS = {
-  DRAW: 'DRAW',
-  LOSS: 'LOSS',
-  WIN: 'WIN',
 }
 
 export function getRoundOutput(reference, comparision) {
@@ -33,24 +19,6 @@ export function getRoundOutput(reference, comparision) {
   const currentCase = `${reference} vs ${comparision}`
 
   return WIN_CASES.includes(currentCase) ? OUTPUTS.WIN : OUTPUTS.LOSS
-}
-
-const SHAPE_VALUES = {
-  [SHAPES.ROCK]: 1,
-  [SHAPES.PAPER]: 2,
-  [SHAPES.SCISSORS]: 3,
-}
-
-const ROUND_OUTPUT_VALUES = {
-  [OUTPUTS.DRAW]: 3,
-  [OUTPUTS.LOSS]: 0,
-  [OUTPUTS.WIN]: 6,
-}
-
-const OPPONENT_SHAPES = {
-  A: SHAPES.ROCK,
-  B: SHAPES.PAPER,
-  C: SHAPES.SCISSORS,
 }
 
 export function solve1(rounds) {
@@ -67,7 +35,7 @@ export function solve1(rounds) {
 
     const roundOutput = getRoundOutput(strategicShape, opponentShape)
 
-    return (total += ROUND_OUTPUT_VALUES[roundOutput] + SHAPE_VALUES[strategicShape])
+    return (total += ROUND_OUTPUT_POINTS[roundOutput] + SHAPE_POINTS[strategicShape])
   }, 0)
 }
 
@@ -92,7 +60,7 @@ export function solve2(rounds) {
 
   return rounds.reduce((total, [opponent, output]) => {
     const roundOutput = STRATEGIC_OUTPUT[output]
-    const roundValue = ROUND_OUTPUT_VALUES[roundOutput]
+    const roundValue = ROUND_OUTPUT_POINTS[roundOutput]
     const opponentShape = OPPONENT_SHAPES[opponent]
     let strategicShape
 
@@ -100,13 +68,13 @@ export function solve2(rounds) {
     if (roundOutput === OUTPUTS.LOSS) strategicShape = SHAPE_OPPOSITE_IF_LOSS[opponentShape]
     if (roundOutput === OUTPUTS.WIN) strategicShape = SHAPE_OPPOSITE_IF_WIN[opponentShape]
 
-    const strategicShapeValue = SHAPE_VALUES[strategicShape]
+    const strategicShapeValue = SHAPE_POINTS[strategicShape]
 
     return (total += roundValue + strategicShapeValue)
   }, 0)
 }
 
-const input = fs.readFileSync(path.resolve(__dirname, './input.txt'), 'utf-8')
+const input = readFile(__dirname, './input.txt')
 
 console.log('First case result:', solve1(parseInput(input))) // 14375
-console.log('Second case result:', solve2(parseInput(input))) // 14375
+console.log('Second case result:', solve2(parseInput(input))) // 10274
