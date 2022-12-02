@@ -38,7 +38,7 @@ describe('Day 01', () => {
     expectedSums.forEach((expectedSum, index) => expect(sumNumbers(...parsed[index])).toEqual(expectedSum))
   })
 
-  it('should "main" return both day cases', () => {
+  it('should "solve" return both day cases', () => {
     const result = solve(parseInput(DEMO_INPUT))
 
     expect(result.biggestCalories).toEqual(24000)
