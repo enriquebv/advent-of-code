@@ -11,7 +11,7 @@
 | ------------------------ | ------------------------ | ------------------------ |
 | Day 01 `js ✅` `rust ⬜` | Day 11 `js ⬜` `rust ⬜` | Day 21 `js ⬜` `rust ⬜` |
 | Day 02 `js ✅` `rust ⬜` | Day 12 `js ⬜` `rust ⬜` | Day 22 `js ⬜` `rust ⬜` |
-| Day 03 `js ⬜` `rust ⬜` | Day 13 `js ⬜` `rust ⬜` | Day 23 `js ⬜` `rust ⬜` |
+| Day 03 `js ✅` `rust ⬜` | Day 13 `js ⬜` `rust ⬜` | Day 23 `js ⬜` `rust ⬜` |
 | Day 04 `js ⬜` `rust ⬜` | Day 14 `js ⬜` `rust ⬜` | Day 24 `js ⬜` `rust ⬜` |
 | Day 05 `js ⬜` `rust ⬜` | Day 15 `js ⬜` `rust ⬜` | Day 25 `js ⬜` `rust ⬜` |
 | Day 06 `js ⬜` `rust ⬜` | Day 16 `js ⬜` `rust ⬜` |
