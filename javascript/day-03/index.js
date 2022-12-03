@@ -1,13 +1,7 @@
 import { readFile } from '../shared'
 
 export function parseInput(input) {
-  return input.split('\n').map((line) => {
-    const halfIndex = line.length / 2
-    const firstHalf = line.slice(0, halfIndex)
-    const secondHalf = line.slice(halfIndex)
-
-    return [firstHalf.split(''), secondHalf.split('')]
-  })
+  return input.split('\n').map((line) => line.split(''))
 }
 
 export function getItemValue(char) {
@@ -21,37 +15,47 @@ export function getItemValue(char) {
   return charCode - 38
 }
 
-export function solve1(rucksacks) {
-  let i = 0
+export const getFirstCharacterCoincidenceInCollections = (...collections) =>
+  collections[0].find((char) => collections.slice(1).every((collection) => collection.includes(char)))
 
-  for (const [first, second] of rucksacks) {
-    const m = first.find((l) => second.includes(l))
-    const v = m ? getItemValue(m) : 0
+export function solvePartOne(rucksacks) {
+  let totalPriorities = 0
 
-    i += v
+  for (const rucksack of rucksacks) {
+    const first = rucksack.slice(0, rucksack.length / 2)
+    const second = rucksack.slice(rucksack.length / 2)
+
+    console.log(first)
+    console.log(second)
+
+    const itemInBothCompartments = getFirstCharacterCoincidenceInCollections(first, second)
+    const itemValue = itemInBothCompartments ? getItemValue(itemInBothCompartments) : 0
+
+    totalPriorities += itemValue
   }
 
-  return i
+  return totalPriorities
 }
 
-export function solve2(rucksacks) {
+export function solvePartTwo(rucksacks) {
   const groupsCount = Math.ceil(rucksacks.length / 3)
-  const p = []
+  let totalPriorities = 0
 
-  for (let i = 0; i <= groupsCount - 1; i++) {
-    const s = i * 3
-    const e = s + 3
-    const g = rucksacks.slice(s, e)
-    const groupRucksacks = g.map(([f, s]) => [...f, ...s])
-    const m = groupRucksacks[0].find((l) => groupRucksacks[1].includes(l) && groupRucksacks[2].includes(l))
+  for (let groupIndex = 0; groupIndex <= groupsCount - 1; groupIndex++) {
+    const sliceStart = groupIndex * 3
+    const sliceEnd = sliceStart + 3
+    const group = rucksacks.slice(sliceStart, sliceEnd)
+    const badge = getFirstCharacterCoincidenceInCollections(...group)
 
-    p.push(getItemValue(m))
+    totalPriorities += getItemValue(badge)
   }
 
-  return p.reduce((acc, i) => i + acc, 0)
+  return totalPriorities
 }
 
-const input = readFile(__dirname, 'input.txt')
-
-// console.log('🎄 Solution day 03, part 1:', solve1(parseInput(input))) // 7845
-console.log('🎄 Solution day 03, part 2:', solve2(parseInput(input))) // 7845
+export function main() {
+  const input = readFile(__dirname, 'input.txt')
+  const parsed = parseInput(input)
+  console.log('🎄 Part one result:', solvePartOne(parsed))
+  console.log('🎄 Part two result:', solvePartTwo(parsed))
+}

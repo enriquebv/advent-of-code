@@ -21,7 +21,7 @@ export function getRoundOutput(reference, comparision) {
   return WIN_CASES.includes(currentCase) ? OUTPUTS.WIN : OUTPUTS.LOSS
 }
 
-export function solve1(rounds) {
+export function solvePartOne(rounds) {
   const INPUT_TO_SHAPE = {
     ...OPPONENT_SHAPES,
     X: SHAPES.ROCK,
@@ -39,7 +39,7 @@ export function solve1(rounds) {
   }, 0)
 }
 
-export function solve2(rounds) {
+export function solvePartTwo(rounds) {
   const STRATEGIC_OUTPUT = {
     X: OUTPUTS.LOSS,
     Y: OUTPUTS.DRAW,
@@ -72,4 +72,11 @@ export function solve2(rounds) {
 
     return (total += roundValue + strategicShapeValue)
   }, 0)
+}
+
+export function main() {
+  const input = readFile(__dirname, './input.txt')
+  const parsed = parseInput(input)
+  console.log('🎄 Part one result:', solvePartOne(parsed))
+  console.log('🎄 Part two result:', solvePartTwo(parsed))
 }

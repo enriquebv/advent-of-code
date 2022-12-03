@@ -1,4 +1,4 @@
-import { getRoundOutput, parseInput, solve1, solve2 } from '.'
+import { getRoundOutput, parseInput, solvePartOne, solvePartTwo } from '.'
 import { readFile } from '../shared'
 import { SHAPES, OUTPUTS } from './shared-enums'
 
@@ -27,10 +27,14 @@ describe('Day 02', () => {
   })
 
   it('should calculate theoric output if second column are shapes', () => {
-    expect(solve1(parseInput(readFile(__dirname, './example.txt')))).toEqual(15)
+    const parsed = parseInput(readFile(__dirname, 'example.txt'))
+    const result = solvePartOne(parsed)
+    expect(result).toEqual(15)
   })
 
   it('should calculate theoric output if second column are outputs', () => {
-    expect(solve2(parseInput(readFile(__dirname, './example.txt')))).toEqual(12)
+    const parsed = parseInput(readFile(__dirname, 'example.txt'))
+    const result = solvePartTwo(parsed)
+    expect(result).toEqual(12)
   })
 })

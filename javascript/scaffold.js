@@ -8,18 +8,25 @@ const CODE_TEMPLATE = `
     // Code to parse txt input
   }
 
-  export function solve(input) {
+  export function solvePartOne(input) {
     // Code to solve the exercise  
   }
 
-  const input = readFile(__dirname, 'input.txt')
+  export function solvePartTwo(input) {
+    // Code to solve the exercise  
+  }
 
-  console.log('🎄 Solution:', solve(parseInput(input)))
+  export function main() {
+    const input = readFile(__dirname, 'input.txt')
+    const parsed = parseInput(input)
+    console.log('🎄 Part one result:', solvePartOne(parsed))
+    console.log('🎄 Part two result:', solvePartTwo(parsed))
+  }
 `
 
 const TESTS_TEMPLATE = `
   import { readFile } from '../shared'
-  import { solve, parseInput } from './'
+  import { solvePartOne, solvePartTwo, parseInput } from './'
 
   describe('Day [[day]]', () => {
     it('should "parseInput" parse input into valid data structure', () => {
@@ -28,11 +35,18 @@ const TESTS_TEMPLATE = `
       // Check data structure
     })
 
-    it('should "solve" return expected result', () => {
+    it('should "solvePartOne" return expected result', () => {
       const parsed = parseInput(readFile(__dirname, 'example.txt'))
-      const result = solve(parsed)
+      const result = solvePartOne(parsed)
 
-      // Check expected example result
+      expect(result).toBe(/* expected part one example result */)
+    })
+
+    it('should "solvePartTwo" return expected result', () => {
+      const parsed = parseInput(readFile(__dirname, 'example.txt'))
+      const result = solvePartTwo(parsed)
+
+      expect(result).toBe(/* expected part two example result */)
     })
   })
 `

@@ -1,5 +1,6 @@
 import { spawn } from 'child_process'
 import path from 'path'
+import { readFile } from './shared'
 
 const day = Number(process.argv[2])
 
@@ -10,8 +11,7 @@ if (Number.isNaN(day)) {
 
 const dayPadded = String(day).padStart(2, '0')
 
-const c = spawn(`node`, ['-r', 'esm', path.resolve(__dirname, `./day-${dayPadded}`)])
+const input = readFile(__dirname, `day-${dayPadded}/input.txt`)
+const { main } = require(path.resolve(__dirname, `./day-${dayPadded}/index.js`))
 
-c.stdout.on('data', (data) => console.log(data.toString()))
-c.stderr.on('data', (error) => console.error(error.toString()))
-c.on('exit', (code) => process.exit(code))
+main()

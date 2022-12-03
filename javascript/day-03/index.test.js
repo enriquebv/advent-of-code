@@ -1,5 +1,5 @@
 import { readFile } from '../shared'
-import { solve1, parseInput, getItemValue, solve2 } from './index.js'
+import { parseInput, getItemValue, solvePartOne, solvePartTwo } from './index.js'
 
 describe('Day 03', () => {
   it('should "parseInput" parse input into valid matrix data structure', () => {
@@ -8,10 +8,7 @@ describe('Day 03', () => {
     expect(matrix).toBeInstanceOf(Array)
     matrix.forEach((rucksack) => {
       expect(rucksack).toBeInstanceOf(Array)
-      expect(rucksack).toHaveLength(2)
-
-      rucksack[0].forEach((item) => expect(typeof item).toBe('string'))
-      rucksack[1].forEach((item) => expect(typeof item).toBe('string'))
+      rucksack.forEach((character) => expect(typeof character).toBe('string'))
     })
   })
 
@@ -31,16 +28,18 @@ describe('Day 03', () => {
     expect(getItemValue('Z')).toBe(52)
   })
 
-  it('should "solve" return expected result', () => {
+  it('should "solvePartOne" return expected result', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
-    const result = solve1(parsed)
+
+    const result = solvePartOne(parsed)
+    console.log(result)
 
     expect(result).toBe(157)
   })
 
-  it.only('should "solve" return expected result', () => {
+  it('should "solvePartTwo" return expected result', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
-    const result = solve2(parsed)
+    const result = solvePartTwo(parsed)
 
     expect(result).toBe(70)
   })

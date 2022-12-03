@@ -21,3 +21,10 @@ export function solve(caloriesMatrix) {
 
   return { biggestCalories, firstThreeBiggestCalories }
 }
+
+export function main() {
+  const input = readFile(__dirname, './input.txt')
+  const parsed = parseInput(input)
+  console.log('🎄 Part one result:', solve(parsed).biggestCalories)
+  console.log('🎄 Part one result:', solve(parsed).firstThreeBiggestCalories)
+}
