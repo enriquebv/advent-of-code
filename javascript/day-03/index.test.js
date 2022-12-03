@@ -1,5 +1,5 @@
 import { readFile } from '../shared'
-import { solve, parseInput, getItemValue } from './'
+import { solve1, parseInput, getItemValue, solve2 } from './index.js'
 
 describe('Day 03', () => {
   it('should "parseInput" parse input into valid matrix data structure', () => {
@@ -33,8 +33,15 @@ describe('Day 03', () => {
 
   it('should "solve" return expected result', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
-    const result = solve(parsed)
+    const result = solve1(parsed)
 
     expect(result).toBe(157)
+  })
+
+  it.only('should "solve" return expected result', () => {
+    const parsed = parseInput(readFile(__dirname, 'example.txt'))
+    const result = solve2(parsed)
+
+    expect(result).toBe(70)
   })
 })

@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "scaffold": "node -r esm ./scaffold.js"
+    "scaffold": "node -r esm ./scaffold.js",
+    "solve": "node -r esm ./solve.js"
   },
   "dependencies": {
     "jest": "^29.3.1"

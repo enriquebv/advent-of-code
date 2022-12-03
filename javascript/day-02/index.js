@@ -73,8 +73,3 @@ export function solve2(rounds) {
     return (total += roundValue + strategicShapeValue)
   }, 0)
 }
-
-const input = readFile(__dirname, './input.txt')
-
-console.log('First case result:', solve1(parseInput(input))) // 14375
-console.log('Second case result:', solve2(parseInput(input))) // 10274

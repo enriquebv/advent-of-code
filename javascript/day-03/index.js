@@ -8,7 +8,6 @@ export function parseInput(input) {
 
     return [firstHalf.split(''), secondHalf.split('')]
   })
-  // Code to parse txt input
 }
 
 export function getItemValue(char) {
@@ -22,7 +21,7 @@ export function getItemValue(char) {
   return charCode - 38
 }
 
-export function solve(rucksacks) {
+export function solve1(rucksacks) {
   let i = 0
 
   for (const [first, second] of rucksacks) {
@@ -35,10 +34,24 @@ export function solve(rucksacks) {
   return i
 }
 
+export function solve2(rucksacks) {
+  const groupsCount = Math.ceil(rucksacks.length / 3)
+  const p = []
+
+  for (let i = 0; i <= groupsCount - 1; i++) {
+    const s = i * 3
+    const e = s + 3
+    const g = rucksacks.slice(s, e)
+    const groupRucksacks = g.map(([f, s]) => [...f, ...s])
+    const m = groupRucksacks[0].find((l) => groupRucksacks[1].includes(l) && groupRucksacks[2].includes(l))
+
+    p.push(getItemValue(m))
+  }
+
+  return p.reduce((acc, i) => i + acc, 0)
+}
+
 const input = readFile(__dirname, 'input.txt')
 
-console.log('🎄 Solution day 03:', solve(parseInput(input))) // 7845
-getItemValue('a')
-getItemValue('z')
-getItemValue('A')
-getItemValue('Z')
+// console.log('🎄 Solution day 03, part 1:', solve1(parseInput(input))) // 7845
+console.log('🎄 Solution day 03, part 2:', solve2(parseInput(input))) // 7845

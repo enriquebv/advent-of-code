@@ -21,10 +21,3 @@ export function solve(caloriesMatrix) {
 
   return { biggestCalories, firstThreeBiggestCalories }
 }
-
-const input = readFile(__dirname, './input.txt')
-
-const result = solve(parseInput(input))
-
-console.log('Biggest calories =>', result.biggestCalories)
-console.log('Total of the biggest three elfs =>', result.firstThreeBiggestCalories)
