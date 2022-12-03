@@ -25,9 +25,6 @@ export function solvePartOne(rucksacks) {
     const first = rucksack.slice(0, rucksack.length / 2)
     const second = rucksack.slice(rucksack.length / 2)
 
-    console.log(first)
-    console.log(second)
-
     const itemInBothCompartments = getFirstCharacterCoincidenceInCollections(first, second)
     const itemValue = itemInBothCompartments ? getItemValue(itemInBothCompartments) : 0
 
