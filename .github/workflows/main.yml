@@ -10,6 +10,7 @@ on:
 jobs:
   javascript-test:
     runs-on: ubuntu-latest
+    name: JavaScript Test
     steps:
       - uses: actions/checkout@v1
       - name: yarn test
@@ -19,7 +20,7 @@ jobs:
           yarn test
   rust-check:
     runs-on: ubuntu-latest
-    name: Check
+    name: Rust Check
     steps:
       - uses: actions/checkout@v2
       - name: cargo check
@@ -27,7 +28,7 @@ jobs:
         run: cargo check
   rust-test:
     runs-on: ubuntu-latest
-    name: Test
+    name: Rust Test
     steps:
       - uses: actions/checkout@v2
       - name: cargo test
