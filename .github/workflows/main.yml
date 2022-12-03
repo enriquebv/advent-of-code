@@ -1,4 +1,4 @@
-name: Unit Tests
+name: Advent Of Cod CI
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 jobs:
-  Jest:
+  javascript-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,3 +17,17 @@ jobs:
         run: |
           yarn
           yarn test
+  rust-check:
+    runs-on: ubuntu-latest
+    name: Check
+    steps:
+      - uses: actions/checkout@v2
+      - name: cargo check
+        run: cargo check
+  rust-test:
+    runs-on: ubuntu-latest
+    name: Test
+    steps:
+      - uses: actions/checkout@v2
+      - name: cargo test
+        run: cargo test

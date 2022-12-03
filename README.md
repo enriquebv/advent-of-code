@@ -1,7 +1,7 @@
 # Advent Of Code 2022
 
-- [JavaScript](#javascript)
-- [Rust](#rust)
+-   [JavaScript](#javascript)
+-   [Rust](#rust)
 
 | Day    | JavaScript | Rust |
 | ------ | ---------- | ---- |
@@ -33,11 +33,11 @@
 
 ## JavaScript
 
-- **Objective**: Enhance TDD kung fu.
-- **Steps to solve days**:
-  1. Create tests before code.
-  2. Create ugly code to make tests green.
-  3. Refactor to enhance code communication.
+-   **Objective**: Enhance TDD kung fu.
+-   **Steps to solve days**:
+    1. Create tests before code.
+    2. Create ugly code to make tests green.
+    3. Refactor to enhance code communication.
 
 ### Structure
 
@@ -50,13 +50,15 @@ javascript/
 ├─ day-02/
 ```
 
-- Each day has it's own dir (`day-01`, `day-02`).
-- **index.js**: Should expose `solve` method, and other exercise methods to be tested.
-- **index.test.js**: Where tests reside. Must have an "DEMO_INPUT" variable with Advent of Code example input, and tests should use that input.
-- **input.txt**: Advent of Code input to solve exercise.
+-   Each day has it's own dir (`day-01`, `day-02`).
+-   **index.js**: Should expose `solve` methods (can be `solve1`, `solve2` if exercise need it), and other exercise methods to be tested.
+-   **index.test.js**: Where tests reside. Must have an "DEMO_INPUT" variable with Advent of Code example input, and tests should use that input.
+-   **input.txt**: Advent of Code input to solve exercise.
 
 ## Rust
 
+> This dir contains [a modified version of this template](https://github.com/fspoettel/advent-of-code-rust).
+
 Optional, but desirable.
 
-- **Objective**: Learn Rust.
+-   **Objective**: Learn Rust.
