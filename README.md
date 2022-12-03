@@ -5,20 +5,19 @@
 ![](https://img.shields.io/badge/days%20completed-3-red)
 
 - [JavaScript](#javascript)
-- [Rust](#rust)
 
-| 🎄                       | ☃️                       | 🎅🏻                       |
-| ------------------------ | ------------------------ | ------------------------ |
-| Day 01 `js ✅` `rust ⬜` | Day 11 `js ⬜` `rust ⬜` | Day 21 `js ⬜` `rust ⬜` |
-| Day 02 `js ✅` `rust ⬜` | Day 12 `js ⬜` `rust ⬜` | Day 22 `js ⬜` `rust ⬜` |
-| Day 03 `js ✅` `rust ⬜` | Day 13 `js ⬜` `rust ⬜` | Day 23 `js ⬜` `rust ⬜` |
-| Day 04 `js ⬜` `rust ⬜` | Day 14 `js ⬜` `rust ⬜` | Day 24 `js ⬜` `rust ⬜` |
-| Day 05 `js ⬜` `rust ⬜` | Day 15 `js ⬜` `rust ⬜` | Day 25 `js ⬜` `rust ⬜` |
-| Day 06 `js ⬜` `rust ⬜` | Day 16 `js ⬜` `rust ⬜` |
-| Day 07 `js ⬜` `rust ⬜` | Day 17 `js ⬜` `rust ⬜` |
-| Day 08 `js ⬜` `rust ⬜` | Day 18 `js ⬜` `rust ⬜` |
-| Day 09 `js ⬜` `rust ⬜` | Day 19 `js ⬜` `rust ⬜` |
-| Day 10 `js ⬜` `rust ⬜` | Day 20 `js ⬜` `rust ⬜` |
+| 🎄        | ☃️        | 🎅🏻        |
+| --------- | --------- | --------- |
+| Day 01 ✅ | Day 11 ⬜ | Day 21 ⬜ |
+| Day 02 ✅ | Day 12 ⬜ | Day 22 ⬜ |
+| Day 03 ✅ | Day 13 ⬜ | Day 23 ⬜ |
+| Day 04 ⬜ | Day 14 ⬜ | Day 24 ⬜ |
+| Day 05 ⬜ | Day 15 ⬜ | Day 25 ⬜ |
+| Day 06 ⬜ | Day 16 ⬜ |
+| Day 07 ⬜ | Day 17 ⬜ |
+| Day 08 ⬜ | Day 18 ⬜ |
+| Day 09 ⬜ | Day 19 ⬜ |
+| Day 10 ⬜ | Day 20 ⬜ |
 
 ## JavaScript
 
@@ -36,18 +35,12 @@ javascript/
 │  ├─ index.test.js
 │  ├─ index.js
 │  ├─ input.txt
+│  ├─ example.txt
 ├─ day-02/
 ```
 
 - Each day has it's own dir (`day-01`, `day-02`).
-- **index.js**: Should expose `solve` methods (can be `solve1`, `solve2` if exercise need it), and other exercise methods to be tested.
-- **index.test.js**: Where tests reside. Must have an "DEMO_INPUT" variable with Advent of Code example input, and tests should use that input.
+- **index.js**: Should expose `main` method.
+- **index.test.js**: Where tests reside. This tests should use only `example.txt` input file.
 - **input.txt**: Advent of Code input to solve exercise.
-
-## Rust
-
-> This dir contains [a modified version of this template](https://github.com/fspoettel/advent-of-code-rust).
-
-Optional, but desirable.
-
-- **Objective**: Learn Rust.
+- **example.txt**: Advent of Code example input to solve exercise.

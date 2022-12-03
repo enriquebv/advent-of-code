@@ -18,19 +18,3 @@ jobs:
         run: |
           yarn
           yarn test
-  rust-check:
-    runs-on: ubuntu-latest
-    name: Rust Check
-    steps:
-      - uses: actions/checkout@v2
-      - name: cargo check
-        working-directory: ./rust
-        run: cargo check
-  rust-test:
-    runs-on: ubuntu-latest
-    name: Rust Test
-    steps:
-      - uses: actions/checkout@v2
-      - name: cargo test
-        working-directory: ./rust
-        run: cargo test
