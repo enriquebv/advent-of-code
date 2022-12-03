@@ -38,7 +38,7 @@ export function solvePartTwo(rucksacks) {
   const groupsCount = Math.ceil(rucksacks.length / 3)
   let totalPriorities = 0
 
-  for (let groupIndex = 0; groupIndex <= groupsCount - 1; groupIndex++) {
+  for (let groupIndex = 0; groupIndex < groupsCount; groupIndex++) {
     const sliceStart = groupIndex * 3
     const sliceEnd = sliceStart + 3
     const group = rucksacks.slice(sliceStart, sliceEnd)
