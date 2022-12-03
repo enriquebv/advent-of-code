@@ -32,7 +32,6 @@ describe('Day 03', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
 
     const result = solvePartOne(parsed)
-    console.log(result)
 
     expect(result).toBe(157)
   })
