@@ -1,14 +1,10 @@
 import { getRoundOutput, parseInput, solve1, solve2 } from '.'
+import { readFile } from '../shared'
 import { SHAPES, OUTPUTS } from './shared-enums'
 
-const DEMO_INPUT = `
-A Y
-B X
-C Z
-`
 describe('Day 02', () => {
   it('should "parseInput" parse input raw input into valid rounds data structure', () => {
-    const parsed = parseInput(DEMO_INPUT)
+    const parsed = parseInput(readFile(__dirname, './example.txt'))
 
     parsed.forEach((line) => {
       expect(line).toBeInstanceOf(Array)
@@ -31,10 +27,10 @@ describe('Day 02', () => {
   })
 
   it('should calculate theoric output if second column are shapes', () => {
-    expect(solve1(parseInput(DEMO_INPUT))).toEqual(15)
+    expect(solve1(parseInput(readFile(__dirname, './example.txt')))).toEqual(15)
   })
 
   it('should calculate theoric output if second column are outputs', () => {
-    expect(solve2(parseInput(DEMO_INPUT))).toEqual(12)
+    expect(solve2(parseInput(readFile(__dirname, './example.txt')))).toEqual(12)
   })
 })

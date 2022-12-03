@@ -4,13 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "scaffold": "node -r esm ./scaffold.js"
   },
   "dependencies": {
     "jest": "^29.3.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.19.6",
+    "esm": "^3.2.25",
     "install": "^0.13.0",
     "npm": "^9.1.3"
   }
