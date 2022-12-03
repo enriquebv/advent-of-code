@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run Tests
+      - name: yarn test
         working-directory: ./javascript
         run: |
           yarn
@@ -23,6 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cargo check
+        working-directory: ./rust
         run: cargo check
   rust-test:
     runs-on: ubuntu-latest
@@ -30,4 +31,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: cargo test
+        working-directory: ./rust
         run: cargo test
