@@ -44,3 +44,17 @@ javascript/
 - **index.test.js**: Where tests reside. This tests should use only `example.txt` input file.
 - **input.txt**: Advent of Code input to solve exercise.
 - **example.txt**: Advent of Code example input to solve exercise.
+
+### Commands
+
+#### yarn test
+
+Run tests in `index.test.js` files.
+
+#### yarn scaffold [number]
+
+Create a `day-[number]` dir with basic files to start coding.
+
+#### yarn solve [number]
+
+Run `day-[number]/index.js:main` method.
