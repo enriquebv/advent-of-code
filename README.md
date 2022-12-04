@@ -4,8 +4,6 @@
 ![](https://img.shields.io/badge/day%20📅-4-blue)
 ![](https://img.shields.io/badge/days%20completed-4-red)
 
-- [JavaScript](#javascript)
-
 | 🎄        | ☃️        | 🎅🏻        |
 | --------- | --------- | --------- |
 | Day 01 ✅ | Day 11 ⬜ | Day 21 ⬜ |
@@ -19,15 +17,13 @@
 | Day 09 ⬜ | Day 19 ⬜ |
 | Day 10 ⬜ | Day 20 ⬜ |
 
-## JavaScript
-
 - **Objective**: Enhance TDD kung fu.
 - **Steps to solve days**:
   1. Create tests before code.
   2. Create ugly code to make tests green.
   3. Refactor to enhance code communication.
 
-### Structure
+## Structure
 
 ```
 javascript/
@@ -45,16 +41,16 @@ javascript/
 - **input.txt**: Advent of Code input to solve exercise.
 - **example.txt**: Advent of Code example input to solve exercise.
 
-### Commands
+## Commands
 
-#### yarn test
+### yarn test
 
 Run tests in `index.test.js` files.
 
-#### yarn scaffold [number]
+### yarn scaffold [number]
 
 Create a `day-[number]` dir with basic files to start coding.
 
-#### yarn solve [number]
+### yarn solve [number]
 
 Run `day-[number]/index.js:main` method.
