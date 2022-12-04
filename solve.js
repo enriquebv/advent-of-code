@@ -1,4 +1,3 @@
-import { spawn } from 'child_process'
 import path from 'path'
 import { readFile } from './shared'
 
@@ -11,7 +10,14 @@ if (Number.isNaN(day)) {
 
 const dayPadded = String(day).padStart(2, '0')
 
-const input = readFile(__dirname, `day-${dayPadded}/input.txt`)
-const { main } = require(path.resolve(__dirname, `./day-${dayPadded}/index.js`))
+try {
+  const { main } = require(path.resolve(__dirname, `./day-${dayPadded}/index.js`))
+  main()
+} catch (error) {
+  if (error.code === 'ENOENT') {
+    console.error('❌ Day not exists.')
+    process.exit(1)
+  }
 
-main()
+  throw error
+}

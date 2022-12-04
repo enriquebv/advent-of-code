@@ -1,8 +1,8 @@
 # Advent Of Code 2022
 
-![](https://img.shields.io/badge/stars%20⭐-6-yellow)
-![](https://img.shields.io/badge/day%20📅-3-blue)
-![](https://img.shields.io/badge/days%20completed-3-red)
+![](https://img.shields.io/badge/stars%20⭐-8-yellow)
+![](https://img.shields.io/badge/day%20📅-4-blue)
+![](https://img.shields.io/badge/days%20completed-4-red)
 
 - [JavaScript](#javascript)
 
@@ -11,7 +11,7 @@
 | Day 01 ✅ | Day 11 ⬜ | Day 21 ⬜ |
 | Day 02 ✅ | Day 12 ⬜ | Day 22 ⬜ |
 | Day 03 ✅ | Day 13 ⬜ | Day 23 ⬜ |
-| Day 04 ⬜ | Day 14 ⬜ | Day 24 ⬜ |
+| Day 04 ✅ | Day 14 ⬜ | Day 24 ⬜ |
 | Day 05 ⬜ | Day 15 ⬜ | Day 25 ⬜ |
 | Day 06 ⬜ | Day 16 ⬜ |
 | Day 07 ⬜ | Day 17 ⬜ |
