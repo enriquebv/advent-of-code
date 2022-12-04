@@ -1,53 +1,52 @@
 import { readFile } from '../shared'
 
 export function parseInput(input) {
-  // Code to parse txt input
-  return input.split('\n').map((line) => line.split(',').map((group) => group.split('-').map(Number)))
+  return input.split('\n').map((line) =>
+    line.split(',').map((group) => {
+      const [start, end] = group.split('-').map(Number)
+
+      return { start, end }
+    })
+  )
 }
 
-export function checkRange(mode, ...ranges) {
-  if (mode === 'inclusion') {
-    const ro = ranges
-      .map((range) => {
-        const [min, max] = range
-        return { range, size: max - min + 1 }
-      })
-      .sort((a, b) => b.size - a.size)
-      .map((r) => r.range)
+export function checkRangeOverlap(firstRange, secondRange) {
+  // We will get the bigger range to check if small one fits inside.
+  const rangesSortedBySize = [firstRange, secondRange].sort((a, b) => {
+    const aSize = a.end - a.start
+    const bSize = b.end - b.start
 
-    const [b, s] = ro
-    const minc = s.range[0] >= b.range[0]
-    const maxc = s.range[1] <= b.range[1]
-    return minc && maxc
-  }
+    return bSize - aSize
+  })
 
-  if (mode === 'overlap') {
-    // To simplify checks, we order by direction, and only checks if right, will intercesect with left in start or end.
-    // Example:
-    // Left: ..234...
-    // Right: ..356..
-    // Will be positive, because: rightStartsBetweenLeft
-    // Direction sort idea by @jorgepexp, but his brain shutdown after the idea.
-    const [left, right] = ranges.sort((a, b) => a[0] - b[0]).map(({ start, end }) => ({ start, end }))
-    const rightStartsBetweenLeft = right.start >= left.start && right.end <= left.end
-    const rightEndsBetweenLeft = right.end >= left.start && right.end <= left.end
+  const [biggerRange, smallerRange] = rangesSortedBySize
 
-    return rightStartsBetweenLeft || rightEndsBetweenLeft
-  }
-
-  throw new Error('Mode not supported')
+  return smallerRange.start >= biggerRange.start && smallerRange.end <= biggerRange.end
 }
 
-export function solvePartOne(input) {
-  const ol = input.filter((ranges) => checkRange('inclusion', ...ranges))
+export function checkRangeIntersection(firstRange, secondRange) {
+  /**
+   * To simplify checks, we order both ranges from left to right.
+   * Then we only need to check if right one, start or ends inside left.
+   * Direction sort was a suggestion of @jorgepexp, but his brain shutdown just he before say that
+   * so I'm not sure if deserves credit. 🌚❤️
+   */
+  const rangesSortedBySize = [firstRange, secondRange].sort((a, b) => a.start - b.start)
 
-  return ol.length
+  const [leftRange, rightRange] = rangesSortedBySize
+
+  const rightStartsInLeftRange = rightRange.start >= leftRange.start && rightRange.start <= leftRange.end
+  const rightEndsInLeftRange = rightRange.end >= leftRange.start && rightRange.end <= leftRange.end
+
+  return rightStartsInLeftRange || rightEndsInLeftRange
 }
 
-export function solvePartTwo(input) {
-  const ol = input.filter((ranges) => checkRange('overlap', ...ranges))
+export function solvePartOne(groups) {
+  return groups.filter((ranges) => checkRangeOverlap(...ranges)).length
+}
 
-  return ol.length
+export function solvePartTwo(groups) {
+  return groups.filter((ranges) => checkRangeIntersection(...ranges)).length
 }
 
 export function main() {
