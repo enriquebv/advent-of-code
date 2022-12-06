@@ -35,14 +35,14 @@ const TESTS_TEMPLATE = `
       // Check data structure
     })
 
-    it('should "solvePartOne" return expected result', () => {
+    it('should solve part one return expected result', () => {
       const parsed = parseInput(readFile(__dirname, 'example.txt'))
       const result = solvePartOne(parsed)
 
       expect(result).toBe(/* expected part one example result */)
     })
 
-    it.todo('should "solvePartTwo" return expected result')
+    it.todo('should solve part two return expected result')
   })
 `
 
