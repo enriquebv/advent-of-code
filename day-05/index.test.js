@@ -1,5 +1,5 @@
 import { readFile } from '../shared'
-import { solvePartOne, solvePartTwo, parseInput } from './'
+import { solve, parseInput } from './'
 
 describe('Day 05', () => {
   it('should "parseInput" parse input into valid data structure', () => {
@@ -17,15 +17,15 @@ describe('Day 05', () => {
 
   it('should "solvePartOne" return expected result', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
-    const result = solvePartOne(parsed)
+    const result = solve({ ...parsed, crane: 'CrateMover 9000' })
 
     expect(result).toBe('CMZ')
   })
 
   it('should "solvePartTwo" return expected result', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
-    const result = solvePartTwo(parsed)
+    const result = solve({ ...parsed, crane: 'CrateMover 9001' })
 
-    expect(result).toBe(/* expected part two example result */)
+    expect(result).toBe('MCD')
   })
 })

@@ -40,11 +40,15 @@ export function parseInput(input) {
   return { stacks: sls, movements: ms }
 }
 
-export function solvePartOne({ stacks, movements }) {
+export function solve({ stacks, movements, crane }) {
   let result = JSON.parse(JSON.stringify(stacks))
 
   movements.forEach(({ quantity, fromStack, toStack }) => {
-    const createsToMove = result[fromStack].splice(0, quantity)
+    let createsToMove = result[fromStack].splice(0, quantity)
+
+    if (crane === 'CrateMover 9001') {
+      createsToMove = createsToMove.reverse()
+    }
 
     createsToMove.forEach((c) => result[toStack].unshift(c))
   })
@@ -52,13 +56,9 @@ export function solvePartOne({ stacks, movements }) {
   return result.map((s) => s[0] || ' ').join('')
 }
 
-export function solvePartTwo(input) {
-  // Code to solve the exercise
-}
-
 export function main() {
   const input = readFile(__dirname, 'input.txt')
   const parsed = parseInput(input)
-  console.log('🎄 Part one result:', solvePartOne(parsed))
-  // console.log('🎄 Part two result:', solvePartTwo(parsed))
+  console.log('🎄 Part one result:', solve({ ...parsed, crane: 'CrateMover 9000' }))
+  console.log('🎄 Part two result:', solve({ ...parsed, crane: 'CrateMover 9001' }))
 }
