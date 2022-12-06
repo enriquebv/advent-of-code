@@ -42,12 +42,7 @@ const TESTS_TEMPLATE = `
       expect(result).toBe(/* expected part one example result */)
     })
 
-    it('should "solvePartTwo" return expected result', () => {
-      const parsed = parseInput(readFile(__dirname, 'example.txt'))
-      const result = solvePartTwo(parsed)
-
-      expect(result).toBe(/* expected part two example result */)
-    })
+    it.todo('should "solvePartTwo" return expected result')
   })
 `
 
