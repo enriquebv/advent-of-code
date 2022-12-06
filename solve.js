@@ -9,12 +9,14 @@ if (Number.isNaN(day)) {
 }
 
 const dayPadded = String(day).padStart(2, '0')
+const entrypoint = path.resolve(__dirname, `./day-${dayPadded}/index.js`)
 
 try {
-  const { main } = require(path.resolve(__dirname, `./day-${dayPadded}/index.js`))
-  main()
+  require(entrypoint).main()
 } catch (error) {
-  if (error.code === 'ENOENT') {
+  const isMissingEntrypoint = error.code === 'ENOENT' && error.path === entrypoint
+
+  if (isMissingEntrypoint) {
     console.error('❌ Day not exists.')
     process.exit(1)
   }
