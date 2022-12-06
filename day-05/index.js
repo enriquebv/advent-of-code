@@ -1,59 +1,59 @@
 import { readFile } from '../shared'
 
 export function parseInput(input) {
-  const [crates, movements] = input.split('\n\n')
-  const rs = crates.split('\n')
-  const sd = rs.slice(0, rs.length - 1)
-  const d = Math.max(
-    ...rs
-      .slice(rs.length - 1)[0]
+  const [cratesInput, movementsInput] = input.split('\n\n')
+  const cratesLines = cratesInput.split('\n')
+  const stackLines = cratesLines.slice(0, cratesLines.length - 1)
+  const stackLinesCount = Math.max(
+    ...cratesLines
+      .slice(cratesLines.length - 1)[0]
       .trim()
       .split(/\s{1,}/g)
       .map(Number)
   )
 
-  const sls = []
+  const stacks = []
 
-  sd.forEach((sl) => {
-    for (let index = 0; index < d; index++) {
+  stackLines.forEach((stackLine) => {
+    for (let index = 0; index < stackLinesCount; index++) {
       const start = index * 3 + index
       const end = start + 3
 
-      if (!sls[index]) sls.push([])
+      if (!stacks[index]) stacks.push([])
 
-      const crate = sl.slice(start, end).charAt(1).replace(' ', '')
+      const crate = stackLine.slice(start, end).charAt(1).replace(' ', '')
 
-      if (crate) sls[index].push(crate)
+      if (crate) stacks[index].push(crate)
     }
   })
 
-  const ms = movements.split('\n').map((line) => {
-    const movementI = line.split(' ')
+  const movementsLines = movementsInput.split('\n')
+  const movements = movementsLines.map((line) => {
+    const movementInformation = line.split(' ')
+    const quantity = Number(movementInformation[1])
+    const fromStack = Number(movementInformation[3]) - 1
+    const toStack = Number(movementInformation[5]) - 1
 
-    return {
-      quantity: Number(movementI[1]),
-      fromStack: Number(movementI[3] - 1),
-      toStack: Number(movementI[5] - 1),
-    }
+    return { quantity, fromStack, toStack }
   })
 
-  return { stacks: sls, movements: ms }
+  return { stacks, movements }
 }
 
 export function solve({ stacks, movements, crane }) {
-  let result = JSON.parse(JSON.stringify(stacks))
+  let mutatedStacks = JSON.parse(JSON.stringify(stacks))
 
   movements.forEach(({ quantity, fromStack, toStack }) => {
-    let createsToMove = result[fromStack].splice(0, quantity)
+    let cratesToMove = mutatedStacks[fromStack].splice(0, quantity)
 
     if (crane === 'CrateMover 9001') {
-      createsToMove = createsToMove.reverse()
+      cratesToMove = cratesToMove.reverse()
     }
 
-    createsToMove.forEach((c) => result[toStack].unshift(c))
+    cratesToMove.forEach((crate) => mutatedStacks[toStack].unshift(crate))
   })
 
-  return result.map((s) => s[0] || ' ').join('')
+  return mutatedStacks.map((stack) => stack[0]).join('')
 }
 
 export function main() {
