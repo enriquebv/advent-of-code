@@ -1,5 +1,4 @@
 import path from 'path'
-import { readFile } from './shared'
 
 const day = Number(process.argv[2])
 
