@@ -5,8 +5,6 @@ describe('Day 07', () => {
   it('should "parseInput" parse input into valid data structure', () => {
     const parsed = parseInput(readFile(__dirname, 'example.txt'))
 
-    console.log(parsed)
-
     expect(parsed).toEqual({
       a: {
         '..': expect.any(Object),
@@ -37,5 +35,10 @@ describe('Day 07', () => {
     expect(result).toBe(95437)
   })
 
-  it.todo('should solve part two return expected result')
+  it('should solve part two return expected result', () => {
+    const parsed = parseInput(readFile(__dirname, 'example.txt'))
+    const result = solvePartTwo(parsed)
+
+    expect(result).toBe(24933642)
+  })
 })
