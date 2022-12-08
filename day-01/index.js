@@ -1,14 +1,10 @@
-import { readFile } from '../shared'
+import { readFile, sumNumbers } from '../shared'
 
 export function parseInput(input) {
   return input
     .trim()
     .split(/\n\n/)
     .map((line) => line.split('\n').map(Number))
-}
-
-export function sumNumbers(...numbers) {
-  return numbers.reduce((acc, line) => (acc += line), 0)
 }
 
 export function solve(caloriesMatrix) {
